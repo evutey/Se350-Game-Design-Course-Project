@@ -43,7 +43,7 @@ public class FishermanMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boat"))
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
                 if (isMoving)
                 {
