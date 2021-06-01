@@ -17,6 +17,16 @@ public class Fisherman : MonoBehaviour
     private int luckyNumber;
     private int purse;
     public Text coin;
+    private bool fishNow;
+    private bool isFishing;
+    private bool isThrow;
+
+    private float fishTimer;
+    private float fishAbleTime;
+    private bool isFishingArea;
+    public Animator _animator;
+    private bool isMissed;
+    private bool isCatched;
 
     private void Awake()
     {
@@ -25,6 +35,15 @@ public class Fisherman : MonoBehaviour
         uiInventory.SetInventory(inventory);
         uiInventory.SetPlayer(this);
         purse = 0;
+        fishNow = false;
+        fishTimer = Random.Range(3f, 5f);
+        fishAbleTime = 1f;
+        isFishing = false;
+        isFishingArea = false;
+        isThrow = false;
+        isMissed = false;
+        isCatched = false;
+        
 
     }
     public Vector3 GetPosition() {
@@ -36,18 +55,65 @@ public class Fisherman : MonoBehaviour
    
     void Update()
     {
-        if (emptySlot !=8 )
+        if (isFishingArea && Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("k PRESSESD!");
+            _animator.SetBool("Catch", false);
+            _animator.SetBool("Throw", true);
+            isFishing = true;
+            isMissed = false;
+            isCatched = false;
+        }
+        if (isFishing)
+        {
+            _animator.SetBool("Fish", true);
+           
+            fishTimer -= Time.deltaTime;
+            if (fishTimer <= 0)
+            {
+                fishNow = true;
+                Debug.Log("Press Space Now");
+            }
+            if (fishNow)
+            {
+                fishAbleTime -= Time.deltaTime;
+            }
+            if (fishAbleTime <=0)
+            {
+                fishNow = false;
+                isFishing = false;
+                fishTimer = Random.Range(3f, 5f);
+                fishAbleTime = 1f;
+                _animator.SetBool("Throw", false);
+                _animator.SetBool("Fish", false);
+                _animator.SetBool("Catch", true);
+                if (isMissed)
+                {
+                    _animator.SetBool("Missed", true);
+                }
+            }
+        }
+        /*if (emptySlot !=8 )
             if (Input.GetKeyDown(KeyCode.S))
             {
                 inventory.GetItemList().RemoveAt(inventory.GetItemList().Count-1);
                 emptySlot++;
-            }
+            }*/
 
-        if (emptySlot !=0)
+        
+        if (emptySlot !=0 && fishNow)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            isMissed = true;
+            _animator.SetBool("Throw", false);
+            _animator.SetBool("Fish", false);
+            if (Input.GetKeyDown(KeyCode.Space) && !isCatched)
             {
+                _animator.SetBool("Catch", true);
+                isMissed = false;
+                fishNow = false;
+                isCatched = true;
                 luckyNumber = Random.Range(0, 100);
+                Debug.Log("You catch a fish!");
                 if (luckyNumber <= 25)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish1, amount = 1 });
@@ -135,6 +201,23 @@ public class Fisherman : MonoBehaviour
                 purse += price;
                 coin.text = purse.ToString();
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("fishArea"))
+        {
+            Debug.Log("Fishing area is OK!");
+            isFishingArea = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("fishArea"))
+        {
+            isFishingArea = false;
+            Debug.Log("Fishing area is not avaible");
         }
     }
 }
