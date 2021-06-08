@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -30,33 +28,4 @@ public class Item {
         case ItemType.Fish8:       return ItemAssets.Instance.fish8;
         }
     }
-    public Color GetColor() {
-        switch (itemType) {
-        default:
-        case ItemType.Fish1:      return new Color(1, 1, 1);
-        case ItemType.Fish2:      return new Color(1, 0, 0);
-        case ItemType.Fish3:      return new Color(0, 0, 1);
-        case ItemType.Fish4:      return new Color(1, 1, 0);
-        case ItemType.Fish5:      return new Color(1, 0, 1);
-        case ItemType.Fish6:      return new Color(1, 1, 1);
-        case ItemType.Fish7:      return new Color(1, 0, 0);
-        case ItemType.Fish8:      return new Color(0, 0, 1);
-        }
-    }
-    public bool IsStackable() {
-        switch (itemType) {
-        default:
-            return true;
-        case ItemType.Fish1:
-        case ItemType.Fish2:
-        case ItemType.Fish3:
-        case ItemType.Fish4:
-        case ItemType.Fish5:
-        case ItemType.Fish6:
-        case ItemType.Fish7:
-        case ItemType.Fish8:
-            return false;
-        }
-    }
-
 }

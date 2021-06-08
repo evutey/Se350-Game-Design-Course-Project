@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatControl : MonoBehaviour
@@ -8,14 +6,11 @@ public class BoatControl : MonoBehaviour
     public bool isControl;
 
     public GameObject fisherman;
-    // Start is called before the first frame update
     void Start()
     {
         isControl = false;
         fisherman = GameObject.Find("Fisherman");
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (isControl)
@@ -24,7 +19,6 @@ public class BoatControl : MonoBehaviour
             transform.position += new Vector3(movement,0,0) * (boatSpeed * Time.deltaTime);
         }
     }
-
     public void changeControl()
     {
         if (isControl == false)
@@ -37,6 +31,5 @@ public class BoatControl : MonoBehaviour
             isControl = false;
             fisherman.GetComponent<Animator>().Play("Idle");
         }
-            
     }
 }

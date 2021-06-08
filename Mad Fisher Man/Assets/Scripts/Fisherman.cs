@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
@@ -14,7 +10,7 @@ public class Fisherman : MonoBehaviour
     private Inventory inventory;
     private int emptySlot = 8;
     private int luckyNumber;
-    private int purse;
+    public int purse;
     public Text coin;
     private bool fishNow;
     private bool isFishing;
@@ -27,6 +23,7 @@ public class Fisherman : MonoBehaviour
     private bool isMissed;
     private bool isCatched;
     public GameObject fish_icon;
+    public GameObject QuestNPC;
     private int minTime;
     private int maxTime;
     private int currentUpgradeLevel;
@@ -40,6 +37,8 @@ public class Fisherman : MonoBehaviour
     public Text minText;
     public Text maxText;
     public Text extraLuckText;
+
+    public int catchedFish;
     
 
     private void Awake()
@@ -57,13 +56,14 @@ public class Fisherman : MonoBehaviour
         isMissed = false;
         isCatched = false;
         currentUpgradeLevel = 0;
-        purse = 5000;
+        purse = 0;
         coin.text = purse.ToString();
         minTime = 12;
         maxTime = 16;
         extraLuck = 0;
         olta_image = GameObject.Find("Olta_icon").GetComponent<Image>();
         olta_image.sprite = olta1;
+        catchedFish = -1;
     }
     public Vector3 GetPosition() {
         return transform.position;
@@ -113,12 +113,6 @@ public class Fisherman : MonoBehaviour
                 }
             }
         }
-        /*if (emptySlot !=8 )
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                inventory.GetItemList().RemoveAt(inventory.GetItemList().Count-1);
-                emptySlot++;
-            }*/
         if (emptySlot !=0 && fishNow)
         {
             isMissed = true;
@@ -140,41 +134,57 @@ public class Fisherman : MonoBehaviour
                 if (luckyNumber <= 25)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish1, amount = 1 });
+                    catchedFish = 1;
                 }
                 if (luckyNumber <= 45 && luckyNumber > 25)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish2, amount = 1 });
+                    catchedFish = 2;
                 }
                 if (luckyNumber <= 60 && luckyNumber > 45)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish3, amount = 1 });
+                    catchedFish = 3;
                 }
                 if (luckyNumber <= 70 && luckyNumber > 60)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish4, amount = 1 });
+                    catchedFish = 4;
                 }
                 if (luckyNumber <= 79 && luckyNumber > 70)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish5, amount = 1 });
+                    catchedFish = 5;
                 }
                 if (luckyNumber <= 87 && luckyNumber > 79)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish6, amount = 1 });
+                    catchedFish = 6;
                 }
                 if (luckyNumber <= 94 && luckyNumber > 87)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish7, amount = 1 });
+                    catchedFish = 7;
                 }
                 if (luckyNumber <= 100 && luckyNumber > 94)
                 {
                     inventory.AddItem(new Item { itemType = Item.ItemType.Fish8, amount = 1 });
+                    catchedFish = 8;
                 }
                 emptySlot--;
                 Debug.Log(inventory.GetItemList().Count);
+
+                if (QuestNPC.GetComponent<QuestTracker>().isQuestActive)
+                {
+                    if (catchedFish == QuestNPC.GetComponent<QuestTracker>().activeQuest)
+                    {
+                        QuestNPC.GetComponent<QuestTracker>().quest_Counter++;
+                        QuestNPC.GetComponent<QuestTracker>().questCounter.GetComponent<Text>().text = QuestNPC.GetComponent<QuestTracker>().quest_Counter +("/2");
+                    }
+                }
             }
         }
     }
-
     public void upgradeButton(int x)
     {
         switch (x)

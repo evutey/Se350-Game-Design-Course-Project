@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FishermanMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     private float Speed = 0.5f;
     public Animator _animator;
     private bool facingRight = true;
@@ -17,8 +13,6 @@ public class FishermanMovement : MonoBehaviour
         isMoving = true;
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         var movement = Input.GetAxis("Horizontal");
@@ -38,8 +32,7 @@ public class FishermanMovement : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-
-    private void OnCollisionStay2D(Collision2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Boat"))
         {
