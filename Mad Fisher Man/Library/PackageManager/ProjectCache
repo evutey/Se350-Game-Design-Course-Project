@@ -5,18 +5,26 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637559209936823116
-    m_Hash: 2053551833
+      ticks: 637592004498754592
+    m_Hash: 2348024278
   m_LockFileStatus:
     m_FilePath: C:/Users/astr4moon/Mad-Fisherman/Mad Fisher Man/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637559210134995529
-    m_Hash: 2154220959
+      ticks: 637592004705915821
+    m_Hash: 595435737
 m_EmbeddedPackageManifests:
-  m_ManifestsStatus: {}
+  m_ManifestsStatus:
+    C:/Users/astr4moon/Mad-Fisherman/Mad Fisher Man/Packages/2d-extras-master/package.json:
+      m_FilePath: C:/Users/astr4moon/Mad-Fisherman/Mad Fisher Man/Packages/2d-extras-master/package.json
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 637588384710000000
+      m_Hash: 1399529876
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
@@ -3005,6 +3013,106 @@ m_PackageAssets:
       - name: com.unity.modules.subsystems
         version: 1.0.0
       keywords: []
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: 
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
+    - packageId: com.unity.2d.tilemap.extras@file:C:\Users\astr4moon\Mad-Fisherman\Mad
+        Fisher Man\Packages\2d-extras-master
+      testable: 1
+      isDirectDependency: 1
+      version: 2.2.0
+      source: 3
+      resolvedPath: C:\Users\astr4moon\Mad-Fisherman\Mad Fisher Man\Packages\2d-extras-master
+      assetPath: Packages/com.unity.2d.tilemap.extras
+      name: com.unity.2d.tilemap.extras
+      displayName: 2D Tilemap Extras
+      author:
+        name: 
+        email: 
+        url: 
+      category: 2D
+      type: 
+      description: '2D Tilemap Extras is a package that contains extra scripts for
+        use with 2D Tilemap features in Unity. These include custom Tiles and Brushes
+        for the Tilemap feature.
+
+
+        The following are included in the package:
+
+        Brushes:
+        GameObject Brush, Group Brush, Line Brush, Random Brush
+
+        Tiles: Animated
+        Tile, Rule Tile, Rule Override Tile
+
+        Other: Grid Information, Custom
+        Rules for Rule Tile'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 1.5.0-preview
+        - 1.6.0-preview.1
+        - 1.6.1-preview
+        - 1.6.2-preview
+        - 1.6.3-preview
+        - 1.6.4-preview
+        - 1.7.0-preview
+        - 2.0.0-pre.1
+        - 2.0.0-pre.2
+        - 2.0.0
+        compatible:
+        - 1.5.0-preview
+        - 1.6.0-preview.1
+        - 1.6.1-preview
+        - 1.6.2-preview
+        - 1.6.3-preview
+        - 1.6.4-preview
+        - 1.7.0-preview
+        verified: 
+      dependencies:
+      - name: com.unity.modules.tilemap
+        version: 1.0.0
+      - name: com.unity.2d.tilemap
+        version: 1.0.0
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.tilemap
+        version: 1.0.0
+      - name: com.unity.modules.physics2d
+        version: 1.0.0
+      - name: com.unity.2d.tilemap
+        version: 1.0.0
+      - name: com.unity.ugui
+        version: 1.0.0
+      - name: com.unity.modules.ui
+        version: 1.0.0
+      - name: com.unity.modules.imgui
+        version: 1.0.0
+      - name: com.unity.modules.jsonserialize
+        version: 1.0.0
+      keywords:
+      - 2d
       registry:
         id: 
         name: 
